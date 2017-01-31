@@ -1,0 +1,2767 @@
+// Notes on web development:
+
+// ============================Intro to JavaScript==================================================================
+// This example uses the method to find an html element with id="demo" and changes the element content to hello javascript
+// note that this was was embedded in an HTML file
+document.getElementById("demo").innerHMTL = "Hello JavaScript";
+
+// can also change css style sheets as well
+document.getElementById("demo").style.fontSize = "25px";
+
+/*
+JavaScript can be embedded directly in HTML files either in the head or body
+JavaScript can also exist in sep files as well, see example below
+*/
+function myFunction() {
+  document.getElementById("demo").innerHMTL = "make change in something asshole.";
+}
+
+// to use this in html embed as such. Must use the <script src="scriptname.js"> </script>
+// can put script ref either in head or body of html
+// note that having sep js files can cache them resulting in faster load times
+<!DOCTYPE html>
+<html>
+  <body>
+    <script src="myScript.js"></script>
+  </body>
+</html>
+
+/*
+js has no built in print or display functions
+
+JavaScript can "display" data in different ways:
+  Writing into an alert box, using window.alert().
+  Writing into the HTML output using document.write().
+  Writing into an HTML element, using innerHTML.
+  Writing into the browser console, using console.log().
+*/
+
+// this is an example of writing using an alert window
+<!DOCTYPE html>
+<html>
+  <body>
+    <h1>My First Web Page</h1>
+    <p>My first paragraph.</p>
+      <script>
+        window.alert(5 + 6);
+      </script>
+  </body>
+</html>
+
+// using document write
+// Using document.write() after an HTML document is fully loaded, will delete all existing HTML, as a button click
+<!DOCTYPE html>
+<html>
+  <body>
+    <h1>My First Web Page</h1>
+    <p>My first paragraph.</p>
+    <script>
+    document.write(5 + 6);
+    </script>
+  </body>
+</html>
+
+// can also use innerHTML
+
+// can use console.log() as well, this will write to the browser console for you to view
+
+
+/*====================================JavaScript Syntax============================================================
+var x = 5;    // var is for new variable
+var y = 6;
+var z = x + y;
+
+/*
+-- strings can be with '' or ""
+-- operators: + - * /
+-- concat strings: 'john' + ' ' + ' is ' + ' a ' + 'fag'
+-- In JavaScript, the first character must be a letter, an underscore (_), or a dollar sign ($)
+-- Numbers are not allowed as the first character.
+-- js is case sensative
+-- js uses unicode
+-- add a semi colon after each statement
+-- ignores whitespace
+-- { this is a code block }
+*/
+
+//====================================JavaScript Statements=======================================================
+a = 5; b = 6; c = a + b;
+
+// If a JavaScript statement does not fit on one line, the best place to break it, is after an operator:
+document.getElementById("demo").innerHTML =
+"Hello Dolly.";
+
+// some js keywords
+break	             // Terminates a switch or a loop
+continue	         // Jumps out of a loop and starts at the top
+debugger	         // Stops the execution of JavaScript, and calls (if available) the debugging function
+do ... while	     // Executes a block of statements, and repeats the block, while a condition is true
+for	               // Marks a block of statements to be executed, as long as a condition is true
+function	         // Declares a function
+if ... else	       // Marks a block of statements to be executed, depending on a condition
+return	           // Exits a function
+switch	           // Marks a block of statements to be executed, depending on different cases
+try ... catch	     // Implements error handling to a block of statements
+var	               // Declares a variable
+
+// can assign multiple in on line like c++
+var person = "John Doe", carName = "Volvo", price = 200;
+
+// redeclaring a variable still holds the value Volvo after this execution
+var carName = "Volvo";
+var carName;
+
+// If you add a number to a string, the number will be treated as string, and concatenated.
+var x = "5" + 2 + 3;
+output: "523"
+// =======================================JS Operators=========================================================
+
+// arithmetic
++	  Addition
+-	  Subtraction
+*	  Multiplication
+/	  Division
+%	  Modulus
+++	Increment
+--	Decrement
+
+// assignment ops
+// Op    example       same as
+  =	    x = y	        x = y
+  +=	  x += y	      x = x + y
+  -=	  x -= y	      x = x - y
+  *=	  x *= y	      x = x * y
+  /=	  x /= y	      x = x / y
+  %=	  x %= y	      x = x % y
+
+// JS Comparison and logical operators
+// Operator	Description
+==	equal to
+===	equal value and equal type
+!=	not equal
+!==	not equal value or not equal type
+>	greater than
+<	less than
+>=	greater than or equal to
+<=	less than or equal to
+?	ternary operator
+
+// JavaScript Type Operators
+// Operator	 Description
+typeof	   // Returns the type of a variable
+instanceof // Returns true if an object is an instance of an object type
+
+// JavaScript Operator Precedence Values
+// Value	Operator	Description	Example
+19	( )	Expression grouping	(3 + 4)
+
+18	.	Member	person.name
+18	[]	Member	person["name"]
+
+17	()	Function call	myFunction()
+17	new	Create	new Date()
+
+16	++	Postfix Increment	i++
+16	--	Postfix Decrement	i--
+
+15	++	Prefix Increment	++i
+15	--	Prefix Decrement	--i
+15	!	Logical not	!(x==y)
+15	typeof	Type	typeof x
+
+14	*	Multiplication	10 * 5
+14	/	Division	10 / 5
+14	%	Modulo division	10 % 5
+14	**	Exponentiation	10 ** 2
+
+13	+	Addition	10 + 5
+13	-	Subtraction	10 - 5
+
+12	<<	Shift left	x << 2
+12	>>	Shift right	x >> 2
+
+11	<	Less than	x < y
+11	<=	Less than or equal	x <= y
+11	>	Greater than	x > y
+11	>=	Greater than or equal	x >= y
+
+10	==	Equal	x == y
+10	===	Strict equal	x === y
+10	!=	Unequal	x != y
+10	!==	Strict unequal	x !== y
+
+6	&&	And	x && y
+5	||	Or	x || y
+
+3	=	Assignment	x = y
+3	+=	Assignment	x += y
+3	-=	Assignment	x -= y
+3	*=	Assignment	x *= y
+3	/=	Assignment	x /= y
+
+// The identity (===) operator behaves identically to the equality (==) operator except no type conversion is done,
+// and the types must be the same to be considered equal.
+
+//========================================JavaScript DataTypes========================================================
+// JavaScript Data Types
+// JavaScript variables can hold many data types: numbers, strings, arrays, objects and more:
+// JavaScript has dynamic types as it can change through assignments
+
+var length = 16;                               // Number
+var lastName = "Johnson";                      // String
+var cars = ["Saab", "Volvo", "BMW"];           // Array elements are accessed same as c++
+var x = {firstName:"John", lastName:"Doe"};    // Objects written in name:value pairs sep by commas
+
+// JavaScript Numbers
+// JavaScript has only one type of numbers.
+// Numbers can be written with, or without decimals:
+var x1 = 34.00;     // Written with decimals
+var x2 = 34;        // Written without decimals
+var y = 123e5;      // can be written in sci notation as well
+var x = 123e-5;
+
+// Boolean(value: ?)  <-- this is just a object wrapper for a boolean type
+var x = true;
+var y = false;
+
+// The typeof Operator
+// You can use the JavaScript typeof operator to find the type of a JavaScript variable:
+typeof "John"                // Returns string
+typeof 3.14                  // Returns number
+typeof false                 // Returns boolean
+typeof [1,2,3,4]             // Returns object
+typeof {name:'John', age:34} // Returns object
+
+// undefined types
+var person;                 // type of this is undefined as it was not assigned to yet
+var person = undefined;     // Value is undefined, type is undefined
+
+// null
+var person = null;           // Value is null, but type is still an object
+
+// Difference Between Undefined and Null
+typeof undefined             // undefined
+typeof null                  // object
+null === undefined           // false
+null == undefined            // true
+
+
+//===========================================JavaScript Functions====================================================
+function myFunction(p1, p2) {
+    return p1 * p2;              // The function returns the product of p1 and p2
+}
+
+// use in html
+<!DOCTYPE html>
+<html>
+  <body>
+
+    <p>This example calls a function which performs a calculation, and returns the result:</p>
+
+    <p id="demo"></p>
+
+    <script>
+      function myFunction(a, b) {
+          return a * b;
+      }
+      document.getElementById("demo").innerHTML = myFunction(4, 3);
+    </script>
+
+  </body>
+</html>
+
+
+// Accessing a function without () will return the function definition:
+<!DOCTYPE html>
+<html>
+  <body>
+
+    <p>Accessing a function without (), will return the function definition:</p>
+    <p id="demo"></p>
+
+    <script>
+      function toCelsius(f) {
+          return (5/9) * (f-32);
+      }
+      document.getElementById("demo").innerHTML = toCelsius;
+    </script>
+
+  </body>
+</html>
+// OUTPUT: function toCelsius(f) { return (5/9) * (f-32); }
+
+//===========================================JavaScript Objects========================================================
+
+var car = {type:"Fiat", model:"500", color:"white"};
+var person = {firstName:"John", lastName:"Doe", age:50, eyeColor:"blue"};
+
+// Accessing Object Properties
+// You can access object properties in two ways:
+alert(car.color);
+alert(person.age);
+alert(car["model"]);
+alert(person["lastName"]);
+
+// using obj methods
+// objectName.methodName()
+name = person.fullName();
+
+// Do Not Declare Strings, Numbers, and Booleans as Objects!
+// When a JavaScript variable is declared with the keyword "new", the variable is created as an object:
+var x = new String();        // Declares x as a String object
+var y = new Number();        // Declares y as a Number object
+var z = new Boolean();       //	Declares z as a Boolean object
+// avoid declaring primitive types as objects as shown above it just slows down the code
+
+//===========================================JavaScript Scope========================================================
+// code here can not use carName
+function myFunction() {
+    var carName = "Volvo";
+    // code here can use carName
+}
+
+// Global vars
+var carName = " Volvo";
+// code here can use carName
+function myFunction() {
+    // code here can use	carName
+}
+
+// Automatically Global
+// If you assign a value to a variable that has not been declared, it will automatically become a GLOBAL variable.
+// This code example will declare carName as a global variable, even if it is executed inside a function.
+// begin code
+// code here can use carName
+function myFunction() {
+    carName = "Volvo";
+    // code here can use carName
+}
+// Global variables are deleted when you close the page.
+
+// Global vars in html become window vars
+<!DOCTYPE html>
+<html>
+  <body>
+    <p>
+      In HTML, all global variables will become window variables.
+    </p>
+    <p id="demo"></p>
+    <script>
+      myFunction();
+      document.getElementById("demo").innerHTML =
+                                        "I can display " + window.carName;    // since in an html file use window
+      function myFunction() {
+          carName = "Volvo";    // this is automatically global here
+      }
+    </script>
+  </body>
+</html>
+
+
+//===========================================JavaScript Events========================================================
+// TML events are "things" that happen to HTML elements.
+// When JavaScript is used in HTML pages, JavaScript can "react" on these events.
+
+/*
+Here are some examples of HTML events:
+  -- An HTML web page has finished loading
+  -- An HTML input field was changed
+  -- An HTML button was clicked
+
+we can execute code when an event happens
+html allows for event handler attributes, with JavaScript code, to be added to HTML elements
+*/
+
+// with single quotes
+<some-HTML-element some-event='some JavaScript'>
+
+// with double quotes
+<some-HTML-element some-event="some JavaScript">
+
+// click event
+<button onclick='getElementById("demo").innerHTML=Date()'>The time is?</button>
+
+// The code changes the content of its own element (using this.innerHTML):
+<button onclick="this.innerHTML=Date()">The time is?</button>
+
+/*
+Common HTML DOM Events
+  -- DOM Levels are the versions of the specification for defining how the Document Object Model should work,
+  -- similarly to how we have HTML4, HTML5, and CSS2.1 specifications.
+  -- The most recent spec is DOM Level 3, published in April 2004.
+  -- More on HTML DOM events can be learned in the w3 html DOM chapters
+  -- ref: http://www.w3schools.com/jsref/dom_obj_event.asp
+
+Here is a list of some common HTML DOM Events:
+    Event	           Description            DOM Level
+MOUSE EVENTS
+onclick	             The event occurs when the user clicks on an element	2
+oncontextmenu	       The event occurs when the user right-clicks on an element to open a context menu	3
+ondblclick	         The event occurs when the user double-clicks on an element	2
+onmousedown	         The event occurs when the user presses a mouse button over an element	2
+onmouseenter	       The event occurs when the pointer is moved onto an element	2
+onmouseleave	       The event occurs when the pointer is moved out of an element	2
+onmousemove	         The event occurs when the pointer is moving while it is over an element	2
+onmouseover	         The event occurs when the pointer is moved onto an element, or onto one of its children	2
+onmouseout	         The event occurs when a user moves the mouse pointer out of an element, or out of one of its children	2
+onmouseup	           The event occurs when a user releases a mouse button over an element	2
+
+KEYBOARD EVENTS
+onkeydown	           The event occurs when the user is pressing a key	2
+onkeypress	         The event occurs when the user presses a key	2
+onkeyup	             The event occurs when the user releases a key	2
+
+FRAME/OBJECT EVENTS
+onabort	             The event occurs when the loading of a resource has been aborted	2
+onbeforeunload	     The event occurs before the document is about to be unloaded	2
+onerror	             The event occurs when an error occurs while loading an external file	2
+onhashchange	       The event occurs when there has been changes to the anchor part of a URL	3
+onload	             The event occurs when an object has loaded	2
+onpageshow	         The event occurs when the user navigates to a webpage	3
+onpagehide	         The event occurs when the user navigates away from a webpage	3
+onresize	           The event occurs when the document view is resized	2
+onscroll	           The event occurs when an element's scrollbar is being scrolled	2
+onunload	           The event occurs once a page has unloaded (for <body>)	2
+
+FORM EVENTS
+onblur	             The event occurs when an element loses focus	2
+onchange	           The event occurs when the content of a form element, the selection, or the checked state have changed (for <input>, <keygen>, <select>, and <textarea>)	2
+onfocus	             The event occurs when an element gets focus	2
+onfocusin	           The event occurs when an element is about to get focus	2
+onfocusout	         The event occurs when an element is about to lose focus	2
+oninput	             The event occurs when an element gets user input	3
+oninvalid	           The event occurs when an element is invalid	3
+onreset	             The event occurs when a form is reset	2
+onsearch	           The event occurs when the user writes something in a search field (for <input="search">)	3
+onselect	           The event occurs after the user selects some text (for <input> and <textarea>)	2
+onsubmit	           The event occurs when a form is submitted	2
+
+Drag Events
+Event	Description	DOM
+ondrag	The event occurs when an element is being dragged	3
+ondragend	The event occurs when the user has finished dragging an element	3
+ondragenter	The event occurs when the dragged element enters the drop target	3
+ondragleave	The event occurs when the dragged element leaves the drop target	3
+ondragover	The event occurs when the dragged element is over the drop target	3
+ondragstart	The event occurs when the user starts to drag an element	3
+ondrop	The event occurs when the dragged element is dropped on the drop target	3
+
+Clipboard Events
+Event	Description	DOM
+oncopy	The event occurs when the user copies the content of an element
+oncut	The event occurs when the user cuts the content of an element
+onpaste	The event occurs when the user pastes some content in an element
+
+Print Events
+Event	Description	DOM
+onafterprint	The event occurs when a page has started printing, or if the print dialogue box has been closed	3
+onbeforeprint	The event occurs when a page is about to be printed	3
+
+Media Events
+Event	Description	DOM
+onabort	The event occurs when the loading of a media is aborted	3
+oncanplay	The event occurs when the browser can start playing the media (when it has buffered enough to begin)	3
+oncanplaythrough	The event occurs when the browser can play through the media without stopping for buffering	3
+ondurationchange	The event occurs when the duration of the media is changed	3
+onemptied	The event occurs when something bad happens and the media file is suddenly unavailable (like unexpectedly disconnects)	3
+onended	The event occurs when the media has reach the end (useful for messages like "thanks for listening")	3
+onerror	The event occurs when an error occurred during the loading of a media file	3
+onloadeddata	The event occurs when media data is loaded	3
+onloadedmetadata	The event occurs when meta data (like dimensions and duration) are loaded	3
+onloadstart	The event occurs when the browser starts looking for the specified media	3
+onpause	The event occurs when the media is paused either by the user or programmatically	3
+onplay	The event occurs when the media has been started or is no longer paused	3
+onplaying	The event occurs when the media is playing after having been paused or stopped for buffering	3
+onprogress	The event occurs when the browser is in the process of getting the media data (downloading the media)	3
+onratechange	The event occurs when the playing speed of the media is changed	3
+onseeked	The event occurs when the user is finished moving/skipping to a new position in the media	3
+onseeking	The event occurs when the user starts moving/skipping to a new position in the media	3
+onstalled	The event occurs when the browser is trying to get media data, but data is not available	3
+onsuspend	The event occurs when the browser is intentionally not getting media data	3
+ontimeupdate	The event occurs when the playing position has changed (like when the user fast forwards to a different point in the media)	3
+onvolumechange	The event occurs when the volume of the media has changed (includes setting the volume to "mute")	3
+onwaiting	The event occurs when the media has paused but is expected to resume (like when the media pauses to buffer more data)	3
+
+Animation Events
+Event	Description	DOM
+animationend	The event occurs when a CSS animation has completed	3
+animationiteration	The event occurs when a CSS animation is repeated	3
+animationstart	The event occurs when a CSS animation has started	3
+
+Transition Events
+Event	Description	DOM
+transitionend	The event occurs when a CSS transition has completed	3
+
+Server-Sent Events
+Event	Description	DOM
+onerror	The event occurs when an error occurs with the event source
+onmessage	The event occurs when a message is received through the event source
+onopen	The event occurs when a connection with the event source is opened
+
+Misc Events
+Event	Description	DOM
+onmessage	The event occurs when a message is received through or from an object (WebSocket, Web Worker, Event Source or a child frame or a parent window)	3
+onmousewheel	Deprecated. Use the onwheel event instead
+ononline	The event occurs when the browser starts to work online	3
+onoffline	The event occurs when the browser starts to work offline	3
+onpopstate	The event occurs when the window's history changes	3
+onshow	The event occurs when a <menu> element is shown as a context menu	3
+onstorage	The event occurs when a Web Storage area is updated	3
+ontoggle	The event occurs when the user opens or closes the <details> element	3
+onwheel	The event occurs when the mouse wheel rolls up or down over an element	3
+
+Touch Events
+Event	Description	DOM
+ontouchcancel	The event occurs when the touch is interrupted
+ontouchend	The event occurs when a finger is removed from a touch screen
+ontouchmove	The event occurs when a finger is dragged across the screen
+ontouchstart	The event occurs when a finger is placed on a touch screen
+
+Event Object
+Constants
+Constant	Description	DOM
+CAPTURING_PHASE	The current event phase is the capture phase (1)	1
+AT_TARGET	The current event is in the target phase, i.e. it is being evaluated at the event target (2)	2
+BUBBLING_PHASE	The current event phase is the bubbling phase (3)	3
+
+Properties
+Property	Description	DOM
+bubbles	Returns whether or not a specific event is a bubbling event	2
+cancelable	Returns whether or not an event can have its default action prevented	2
+currentTarget	Returns the element whose event listeners triggered the event	2
+defaultPrevented	Returns whether or not the preventDefault() method was called for the event	3
+eventPhase	Returns which phase of the event flow is currently being evaluated	2
+isTrusted	Returns whether or not an event is trusted	3
+target	Returns the element that triggered the event	2
+timeStamp	Returns the time (in milliseconds relative to the epoch) at which the event was created	2
+type	Returns the name of the event	2
+view	Returns a reference to the Window object where the event occured	2
+
+Methods
+Method	Description	DOM
+preventDefault()	Cancels the event if it is cancelable, meaning that the default action that belongs to the event will not occur	2
+stopImmediatePropagation()	Prevents other listeners of the same event from being called	3
+stopPropagation()	Prevents further propagation of an event during event flow	2
+
+MouseEvent Object
+Property	Description	DOM
+altKey	Returns whether the "ALT" key was pressed when the mouse event was triggered	2
+button	Returns which mouse button was pressed when the mouse event was triggered	2
+buttons	Returns which mouse buttons were pressed when the mouse event was triggered	3
+clientX	Returns the horizontal coordinate of the mouse pointer, relative to the current window, when the mouse event was triggered	2
+clientY	Returns the vertical coordinate of the mouse pointer, relative to the current window, when the mouse event was triggered	2
+ctrlKey	Returns whether the "CTRL" key was pressed when the mouse event was triggered	2
+detail	Returns a number that indicates how many times the mouse was clicked	2
+metaKey	Returns whether the "META" key was pressed when an event was triggered	2
+pageX	Returns the horizontal coordinate of the mouse pointer, relative to the document, when the mouse event was triggered
+pageY	Returns the vertical coordinate of the mouse pointer, relative to the document, when the mouse event was triggered
+relatedTarget	Returns the element related to the element that triggered the mouse event	2
+screenX	Returns the horizontal coordinate of the mouse pointer, relative to the screen, when an event was triggered	2
+screenY	Returns the vertical coordinate of the mouse pointer, relative to the screen, when an event was triggered	2
+shiftKey	Returns whether the "SHIFT" key was pressed when an event was triggered	2
+which	Returns which mouse button was pressed when the mouse event was triggered	2
+
+KeyboardEvent Object
+Property	Description	DOM
+altKey	Returns whether the "ALT" key was pressed when the key event was triggered	2
+ctrlKey	Returns whether the "CTRL" key was pressed when the key event was triggered	2
+charCode	Returns the Unicode character code of the key that triggered the onkeypress event	2
+key	Returns the key value of the key represented by the event	3
+keyCode	Returns the Unicode character code of the key that triggered the onkeypress event, or the Unicode key code of the key that triggered the onkeydown or onkeyup event	2
+location	Returns the location of a key on the keyboard or device	3
+metaKey	Returns whether the "meta" key was pressed when the key event was triggered	2
+shiftKey	Returns whether the "SHIFT" key was pressed when the key event was triggered	2
+which	Returns the Unicode character code of the key that triggered the onkeypress event, or the Unicode key code of the key that triggered the onkeydown or onkeyup event	2
+
+HashChangeEvent Object
+Property	Description	DOM
+newURL	Returns the URL of the document, after the hash has been changed
+oldURL	Returns the URL of the document, before the hash was changed
+
+PageTransitionEvent Object
+Property	Description	DOM
+persisted	Returns whether the webpage was cached by the browser
+
+FocusEvent Object
+Property	Description	DOM
+relatedTarget	Returns the element related to the element that triggered the event	3
+
+AnimationEvent Object
+Property	Description	DOM
+animationName	Returns the name of the animation
+elapsedTime	Returns the number of seconds an animation has been running
+
+TransitionEvent Object
+Property	Description	DOM
+propertyName	Returns the name of the CSS property associated with the transition
+elapsedTime	Returns the number of seconds a transition has been running
+
+WheelEvent Object
+Property	Description	DOM
+deltaX	Returns the horizontal scroll amount of a mouse wheel (x-axis)	3
+deltaY	Returns the vertical scroll amount of a mouse wheel (y-axis)	3
+deltaZ	Returns the scroll amount of a mouse wheel for the z-axis	3
+deltaMode	Returns a number that represents the unit of measurements for delta values (pixels, lines or pages)	3
+*/
+
+// ==================================JavaScript Strings===============================================================
+// String Length
+// The length of a string is found in the built in property length:
+var txt = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+var sln = txt.length;
+
+// use \ to ignore chars such as
+var x = 'It\'s alright';
+var y = "We are the so-called \"Vikings\" from the north."
+
+// special chars
+// Code	Outputs
+//  \'	single quote
+//  \"	double quote
+//  \\	backslash
+//  \n	new line
+//  \r	carriage return
+//  \t	tab
+//  \b	backspace
+//  \f	form feed
+
+// use / regex / for regular expressions
+
+// can break up string text with a \
+document.getElementById("demo").innerHTML = "Hello \
+Dolly!";
+
+// cannot do this illegal
+document.getElementById("demo").innerHTML = \
+"Hello Dolly!";
+
+// strings can be objects
+var x = "John";
+var y = new String("John");        // avoid doing this
+// typeof x will return string
+// typeof y will return object
+// (x === y) is false because x and y have different types (string and object)
+// note that js objects cannot be compared
+
+//================================String Methods and Properties===================================================
+// length
+var txt = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+var sln = txt.length;
+
+// finding first letter of a substring
+var str = "Please locate where 'locate' occurs!";
+var pos = str.indexOf("locate");    // first letter from the left side is what is returned 'l' is the 7th char from left
+// output:  7
+
+// first element of string is in index 0
+function myFunction() {
+    var str = document.getElementById("p1").innerHTML;  // where <p id="p1">lease locate where 'locate' occurs!.</p>
+    var pos = str.indexOf("locate");
+    document.getElementById("demo").innerHTML = pos;
+}
+
+// lastIndexOf() method returns the index of the last occurrence of a specified text in a string
+// output of the first script above is 21
+
+// searching for a string in a string
+// search is the same as index but search more powerful options
+var pos = str.search("locate");
+
+// finding sub strings and shit
+// There are 3 methods for extracting a part of a string:
+slice(start, end)
+substring(start, end)
+substr(start, length)
+
+// using slice
+var str = "Apple, Banana, Kiwi";
+var res = str.slice(7,13);      // returns banana
+var res = str.slice(-12);       // counting from the end --> returns: Banana, Kiwi
+
+// substring cannot accept neg vals
+var res = str.substring(7,13);  // gives us banana
+
+// using substr
+// the only difference is the 2nd arg is the length of the string extracted
+var st = str.substr(7, 6);   // gives us banana
+
+// using replace to replace string content
+str = "Please visit Microsoft!";
+var n = str.replace("Microsoft","W3Schools");  // output: Please visit W3Schools
+
+// By default, the replace() function replaces only the first match. To replace all matches,
+// use a regular expression with a g flag (for global match):
+str = "Please visit Microsoft!";     // global var
+var n = str.replace(/Microsoft/g,"W3Schools");
+// note replace does not change the string str it just produces a new one
+
+// some other methods
+var text1 = "Hello";
+var text2 = "World";
+var text2 = text1.toUpperCase();  // text2 is text1 converted to upper
+var text2 = text1.toLowerCase();  // text2 is text1 converted to lower
+var text3 = text1.concat("	",text2); // we get Hello World
+str_obj.charAt(position)          // returns char at index position
+str_obj.charCodeAt(position)      // returns char unicode at index position
+str[position]                     // like an array can be accessed as well, this is unsafe
+
+// converting a string to an array
+// If the separator is omitted, the returned array will contain the whole string in index [0].
+// If the separator is "", the returned array will be an array of single characters:
+// for complete string ref: http://www.w3schools.com/jsref/jsref_obj_string.asp
+var txt = "a,b,c,d,e";   // String
+txt.split(",");          // Split on commas
+txt.split(" ");          // Split on spaces
+txt.split("|");          // Split on pipe
+
+
+//=====================================JavaScript Numbers=============================================================
+/*
+  -- JS numbers are always 64 bit floating point
+  -- JS does not differentiate between number types
+  -- integers are accurate up to 15 digits
+  -- max number of decimals is 17 -->
+  0.2 + 0.1 = 0.30000000000000004
+  2 + .1 = 2.1
+  ref: http://www.w3schools.com/jsref/jsref_obj_number.asp
+*/
+
+// helps to divide in order to help with the decimal issue
+var x = (0.2 * 10 + 0.1 * 10) / 10;       // x will be 0.3
+
+// hex
+var x = 0xFF;             // x will be 255
+
+// toString method can specify base
+var myNumber = 128;
+myNumber.toString(16);     // returns 80
+myNumber.toString(8);      // returns 200
+myNumber.toString(2);      // returns 10000000
+
+// infinity, this will execute till infinity and beyond :)
+var myNumber = 2;
+while (myNumber != Infinity) {          // Execute until Infinity
+    myNumber = myNumber * myNumber;
+}
+
+// Division by 0 (zero) also generates Infinity:
+var x = 2 / 0;    // x will be infinity or -infinity
+typeof Infinity;        // returns "number"
+
+// NaN
+var x = 100 / "Apple";  // x will be NaN (Not a Number)
+/*output=*/ NaN
+
+// if a string contains a numeric val then the result will be a number as well
+var x = 100 / "10";     // x will be 10, this is a number
+
+// div num and string with no number
+var x = 100 / "apple";
+isNaN(x);               // returns true because x is Not a Number
+
+// and this
+var x = NaN;
+var y = "5";
+var z = x + y;         // z will be NaN5
+typeof NaN;             // returns "number"
+
+// But numbers can also be defined as objects with the keyword new: var y = new Number(123)
+// not good to do though
+var x = 123;                  // number
+var y = new Number(56);      // obj
+// (x == y) is true because x and y have equal values
+// (x === y) is false because x and y have different types
+
+// cannot compare objects
+var x = new Number(500);
+var y = new Number(500);
+// (x == y) is false because objects cannot be compared
+
+// ==================================JavaScript Number Methods=========================================================
+// All number methods can be used on any type of numbers (literals, variables, or expressions):
+var x = 123;
+x.toString();            // returns 123 from variable x
+(123).toString();        // returns 123 from literal 123
+(100 + 23).toString();   // returns 123 from expression 100 + 23
+
+// A parameter defines the number of characters behind the decimal point:
+var x = 9.656;
+x.toExponential(2);     // returns 9.66e+0
+x.toExponential(4);     // returns 9.6560e+0
+x.toExponential(6);     // returns 9.656000e+0
+
+// toFixed() specify number of decimal points
+var x = 9.656;
+x.toFixed(0);           // returns 10
+x.toFixed(2);           // returns 9.66
+x.toFixed(4);           // returns 9.6560
+x.toFixed(6);           // returns 9.656000
+
+// toPrecision() returns a string, with a number written with a specified length:
+var x = 9.656;
+x.toPrecision();        // returns 9.656
+x.toPrecision(2);       // returns 9.7
+x.toPrecision(4);       // returns 9.656
+x.toPrecision(6);       // returns 9.65600
+
+// returns number as a number
+// valueOf()
+var x = 123;
+x.valueOf();            // returns 123 from variable x
+(123).valueOf();        // returns 123 from literal 123
+(100 + 23).valueOf();   // returns 123 from expression 100 + 23
+
+
+// There are 3 JavaScript functions that can be used to convert variables to numbers:
+The Number()      // global method, these methods can be used on all JS datatypes
+The parseInt()    // global method
+The parseFloat()  // global method
+
+// Number()
+x = true;
+Number(x);        // returns 1
+x = false;
+Number(x);        // returns 0
+x = new Date();
+Number(x);        // returns 1404568027739
+x = "10"
+Number(x);        // returns 10
+x = "10 20"
+Number(x);        // returns NaN
+
+// parseInt()
+parseInt("10");         // returns 10
+parseInt("10.33");      // returns 10
+parseInt("10 20 30");   // returns 10
+parseInt("10 years");   // returns 10
+parseInt("years 10");   // returns NaN
+
+// parseFloat()
+parseFloat("10");        // returns 10
+parseFloat("10.33");     // returns 10.33
+parseFloat("10 20 30");  // returns 10
+parseFloat("10 years");  // returns 10
+parseFloat("years 10");  // returns NaN
+
+
+// number properties are like c++ such as MAX_VALUE MIN_VALUE etc etc
+var x = Number.MAX_VALUE;  // returns --> 1.7976931348623157e+308
+
+//==========================================JavaScript Math Object=====================================================
+// allows you to preform several math ops using methods
+// this is used like a static class in java
+// ref: http://www.w3schools.com/jsref/jsref_obj_math.asp
+Math.random();      // random number between 0 and 1
+Math.acosh(3.14);
+Math.floor(3.14);   // output: 3
+// Some Constants
+Math.E          // returns Euler's number
+Math.PI         // returns PI
+Math.SQRT2      // returns the square root of 2
+Math.SQRT1_2    // returns the square root of 1/2
+Math.LN2        // returns the natural logarithm of 2
+Math.LN10       // returns the natural logarithm of 10
+Math.LOG2E      // returns base 2 logarithm of E
+Math.LOG10E     // returns base 10 logarithm of E
+
+// MATH OBJECT METHODS
+abs(x)	Returns the absolute value of x
+acos(x)	Returns the arccosine of x, in radians
+asin(x)	Returns the arcsine of x, in radians
+atan(x)	Returns the arctangent of x as a numeric value between -PI/2 and PI/2 radians
+atan2(y,x)	Returns the arctangent of the quotient of its arguments
+ceil(x)	Returns x, rounded upwards to the nearest integer
+cos(x)	Returns the cosine of x (x is in radians)
+exp(x)	Returns the value of Ex
+floor(x)	Returns x, rounded downwards to the nearest integer
+log(x)	Returns the natural logarithm (base E) of x
+max(x,y,z,...,n)	Returns the number with the highest value
+min(x,y,z,...,n)	Returns the number with the lowest value
+pow(x,y)	Returns the value of x to the power of y
+random()	Returns a random number between 0 and 1
+round(x)	Rounds x to the nearest integer
+sin(x)	Returns the sine of x (x is in radians)
+sqrt(x)	Returns the square root of x
+tan(x)	Returns the tangent of an angle
+
+//==============================================JavaScript Dates=======================================================
+
+/*
+The Date object lets you work with dates (years, months, days, hours, minutes, seconds, and milliseconds)
+A JavaScript date can be written as a string:
+Tue Apr 19 2016 19:01:37 GMT-0400 (EDT)
+
+-- can also mess with timezones and all that shit as well
+*/
+
+// Displaying Dates
+<p id="demo"></p>
+<script>
+document.getElementById("demo").innerHMTL = Date();
+//OUTPUT: Tue Apr 19 2016 19:03:02 GMT-0400 (EDT)
+
+// Date Objects
+new Date()
+new Date(milliseconds)
+new Date(dateString)
+new Date(year, month, day, hours, minutes, seconds, milliseconds)
+
+// using a date string
+<p id="demo"></p>
+<script>
+var d = new Date("October 13, 2014 11:13:00");
+document.getElementById("demo").innerHTML = d;
+</script>
+
+// Using new Date(number), creates a new date object as zero time plus the number.
+// Zero time is 01 January 1970 00:00:00 UTC. The number is specified in milliseconds:
+// JS dates are calculated in milliseconds from 01 January, 1970 00:00:00 UTC, one day contains 86,400,000 ms
+
+//The toUTCString() method converts a date to a UTC string (a date display standard).
+var d = new Date()
+d.toUTCString()
+
+// toDateString() converts date to a more readable format
+var d = new Date()
+d.toDateString()
+//output: Tue Apr 19 2016
+
+//=========================================Date Formats==============================================================
+/*
+  4 types of dates:
+    ISO
+    Long Dates
+    Short Dates
+    Full Format
+*/
+
+// ISO Dates
+var d = new Date("2015-03-25");             // complete date
+var d = new Date("2015-03");                // year and month
+var d = new Date("2015");                   // year
+var d = new Date("2015-03-25T12:00:00");    // complete date plus hour min and secs
+
+// Long Dates
+var d = new Date("Mar 25 2015")
+var d = new Date("25 Mar 2015")
+// Commas are ignored. Names are case insensitive
+var d = new Date("JANUARY, 25, 2015");
+
+// Short Dates: often written in MM/DD/YYYY
+var d = new Date("03/25/2015");
+var d = new Date("2015/03/25");
+
+// Full Date format : JavaScript will accept date strings in "full JavaScript format":
+var d = new Date("Wed Mar 25 2015 09:56:24 GMT+0100 (W. Europe Standard Time)");
+// JavaScript will ignore errors both in the day name and in the time parentheses
+var d = new Date("Fri Mar 25 2015 09:56:24 GMT+0100 (Tokyo Time)");
+
+// Time Zones
+UTC	Coordinated Universal Time
+GMT	Greenwich Mean Time
+EDT	(US) Eastern Daylight Time
+CDT	(US) Central Daylight Time
+MDT	(US) Mountain Daylight Time
+PDT	(US) Pacific Daylight Time
+EST	(US) Eastern Standard Time
+CST	(US) Central Standard Time
+MST	(US) Mountain Standard Time
+PST	(US) Pacific Standard Time
+
+// some methods
+getDate()	//Get the day as a number (1-31)
+getDay()	//Get the weekday as a number (0-6)
+getFullYear()	//Get the four digit year (yyyy)
+getHours()	//Get the hour (0-23)
+getMilliseconds()	//Get the milliseconds (0-999)
+getMinutes()	//Get the minutes (0-59)
+getMonth()	//Get the month (0-11)
+getSeconds()	//Get the seconds (0-59)
+getTime()	//Get the time (milliseconds since January 1, 1970)
+
+
+
+//==========================================JavaScript Array=========================================================
+
+// Displaying Arrays
+// no exception when accessing out of bounds of the array
+// always uses numbered indexes
+<p id="demo"></p>
+<script>
+  var cars = ["Saab", "Volvo", "BMW"];
+  document.getElementById("demo").innerHTML = cars;
+</script>
+
+// Syntax
+var array-name = [item1, item2, ...];
+
+// can also use new but no need to as they both do the same
+var cars = new Array("Saab", "Volvo", "BMW")
+
+// accessing and assigning
+var name = cars[0];
+cars[0] = "Saab";
+
+// Can mix objects in a single array
+myArray[0] = Date.now;
+myArray[1] = myFunction;
+myArray[2] = myCars;
+
+// Arrays are objects
+<!DOCTYPE html>
+<html>
+  <body>
+    <p id="demo"></p>
+    <script>
+      var person = {firstName:"John", lastName:"Doe", age:46};
+      document.getElementById("demo").innerHTML = person["firstName"];
+    </script>
+  </body>
+</html>
+
+// output: John
+
+
+// some properties and methods
+var x = cars.length;                // The length property returns the number of elements in cars
+var y = cars.sort();                // The sort() method sort cars in alphabetical order
+fruits.length;
+fruits[fruits.length] = "Lemon";     // adds a new element (Lemon) to fruits, adds to end
+
+// can add elements to index higher than the size of the array, this will create holes within the array
+
+// Looping arrays
+var i, fruits, text, flen
+for(i = 0; i < flen; i++){
+  text += "<li>" + fruits[i] + "</li?";
+}
+
+// avoid using new with arrays
+var points = new Array();         // Bad
+var points = [];                  // Good
+
+// to check if fruits is an array or not
+Array.isArray(fruits);     // returns true
+
+// can also check this way as well
+function isArray(x) {
+    return x.constructor.toString().indexOf("Array") > -1;
+}
+
+//==========================================JavaScript Array Methods================================================
+//ref:: http://www.w3schools.com/jsref/jsref_obj_array.asp
+// convert array to string (returns comma separated elements)
+var fruits = ["Banana", "Orange", "Apple", "Mango"];
+document.getElementById("demo").innerHTML = fruits.toString();    // just use the toString method
+
+// can also use the join method similar to python
+var fruits = ["Banana", "Orange","Apple", "Mango"];
+document.getElementById("demo").innerHTML = fruits.join(" * ");
+// output: Banana * Orange * Apple * Mango
+
+// popping is possible using the pop method pop(), removes last element
+var removedElement = fruits.pop()     // also returns element that was removed
+
+// pushing is the opposite to popping as it adds a new to element to end of the array
+var newLengthOfArray = fruits.push("kiwi")       // adds kiwi to the end of the list
+
+// Can shift elements
+var fruits = ["Banana", "Orange", "Apple", "Mango"];
+fruits.shift();            // Removes the first element "Banana" from fruits
+// fruits is now Orange, apple, mango
+
+// unshift() method add el to front and shift everything right
+fruits.unshift("lemon");   // adds a new element to the front of the list and shifts the others down
+
+// deleting elements
+var fruits = ["Banana", "Orange", "Apple", "Mango"];
+delete fruits[0];           // Changes the first element in fruits to undefined
+
+// slice can be used to add elements
+var fruits = ["Banana", "Orange", "Apple", "Mango"];
+fruits.splice(2, 0, "Lemon", "Kiwi");
+// 2 defines the pos where new elements should be added
+// 0 defines how many elements should be removed
+// new array: Banana,Orange,Lemon,Kiwi,Apple,Mango
+
+// using splice to remove elements
+fruits.splice(0, 1);        // Removes the first element of fruits
+// 0 defines the position where new elements should be added
+// 1 defines how many elements should be removed
+// the rest of the params are omitted
+
+// sorting an array
+fruits.sort()
+
+// reverse array
+fruits.sort()
+fruits.reverse()   // this puts it in descending order
+
+// numeric sort
+var points = [40, 100, 1, 5, 25, 10];
+points.sort(function(a, b){return a-b}); // for numbers we need to define a sorting function comparator
+// can also use
+function(a,b){return a>b}
+
+// The compare function
+// defines an alternative sort order
+// should return a negative, zero, or positive value.
+// sorts according the return val of the function
+// a can be considered to be the value that is compared to b
+// so if a - b < 0 then a is considered to be less than b (no shit)
+
+// highest to lowest
+function(a, b) {return b-a}
+
+// lowest to highest
+fucntion(a, b) {return a-b}
+
+// concatting two arrays together
+var myChildren = myGirls.concat(myBOys);
+
+// concatting multiple together
+var arr1 = ["Cecilie", "Lone"];
+var arr2 = ["Emil", "Tobias","Linus"];
+var arr3 = ["Robin", "Morgan"];
+var myChildren = arr1.concat(arr2, arr3);     // Concatenates arr1 with arr2 and arr3
+
+
+// slicing
+// This example slices out a part of an array starting from array element 3 ("Apple"):
+fruits.slice(3)
+
+// [1, 3)
+var citrus = fruits.slice(1, 3);
+
+// valueOf array will give us a string representation of the array in question
+
+//==========================================JavaScript Booleans================================================
+
+// Boolean() function
+// 0 is false
+// -0 is false as well
+// "" is false
+// null is false
+// NaN is false ie 10 / "h"
+Boolean(10 > 9)        // returns true
+(10 > 9)              // also returns true
+10 > 9                // also returns true
+
+// can do ternery like in c++
+variablename = (condition) ? value1:value2 // value1 is when true
+
+// empty strings convert to zero
+// when comparing strings to number JS converts string to a number
+// a non numeric string gets converted to NaN which is always false
+2 < 12	     true	Try it »
+2 < "12"	   true	Try it » // this is because when comparing to a string with a number they are both converted to number
+2 < "John"	 false	Try it »
+2 > "John"	 false	Try it »
+2 == "John"	 false	Try it »
+"2" < "12"	 false	Try it » // this is true as they are compared alphabetically
+"2" > "12"	 true	Try it »
+"2" == "12"	 false
+
+// BITWISE OPS
+&	AND	x = 5 & 1	0101 & 0001	0001	1
+|	OR	x = 5 | 1	0101 | 0001	0101	5
+~	NOT	x = ~ 5	 ~0101	1010	10
+^	XOR	x = 5 ^ 1	0101 ^ 0001	0100	4
+<<	Left shift	x = 5 << 1	0101 << 1	1010	10
+>>	Right shift	x = 5 >> 1	0101 >> 1	0010	2
+
+//  conditionals
+if (condition) {
+    // block of code to be executed if the condition is true
+}
+else if (condition2) {
+  // do shit
+}
+else {
+  //do shit
+}
+
+// switch case statements
+switch(expression) {
+    case n:
+        code block
+        break;
+    case n:
+        code block
+        break;
+    default:
+        default code block
+}
+
+//===================================================JavaScript Loops============================================
+/*
+Different Kinds of Loops
+JavaScript supports different kinds of loops:
+for - loops through a block of code a number of times
+for/in - loops through the properties of an object
+while - loops through a block of code while a specified condition is true
+do/while - also loops through a block of code while a specified condition is true
+*/
+// can init multiple vars in loop declaration
+for (i = 0, len = cars.length, text = ""; i < len; i++) {
+    text += cars[i] + "<br>";
+}
+
+//Statement 3 can also be omitted (like when you increment your values inside the loop):
+var i = 0;
+var len = cars.length;
+for (; i < len; ) {
+    text += cars[i] + "<br>";
+    i++;
+}
+
+// The For/In Loop
+// The JavaScript for/in statement loops through the properties of an object:
+var person = {fname:"John", lname:"Doe", age:25};
+var text = "";
+var x;
+for (x in person) {
+    text += person[x];
+}
+
+// while loop
+while (condition) {
+    code block to be executed
+}
+
+// do while loop
+do {
+    code block to be executed
+}
+while (condition);
+
+// to control flow
+break and continue
+
+// can also use labels
+label:
+statements
+
+
+var cars = ["BMW", "Volvo", "Saab", "Ford"];
+list: {
+    text += cars[0] + "<br>";
+    text += cars[1] + "<br>";
+    text += cars[2] + "<br>";
+    break list;
+    text += cars[3] + "<br>";
+    text += cars[4] + "<br>";
+    text += cars[5] + "<br>";
+}
+// output
+BMW
+Volvo
+Saab
+
+/*
+JavaScript Data Types
+In JavaScript there are 5 different data types that can contain values:
+  string
+  number
+  boolean
+  object
+  function
+
+There are 3 types of objects:
+  Object
+  Date
+  Array
+
+And 2 data types that cannot contain values:
+  null
+  undefined
+
+note that typeof returns a string
+*/
+String(x)         // returns a string from a number variable x
+String(123)       // returns a string from a number literal 123
+String(100 + 23)  // returns a string from a number from an expression
+
+Number("3.14")    // returns 3.14
+Number(" ")       // returns 0
+Number("")        // returns 0
+Number("99 88")   // returns NaN
+
+//=====================================================JavaScript REGEX==============================================
+Regular Expression Modifiers
+Modifiers can be used to perform case-insensitive more global searches:
+
+Modifier	Description
+i	Perform case-insensitive matching
+g	Perform a global match (find all matches rather than stopping after the first match)
+m	Perform multiline matching
+Regular Expression Patterns
+Brackets are used to find a range of characters:
+
+Expression	Description
+[abc]	Find any of the characters between the brackets
+[0-9]	Find any of the digits between the brackets
+(x|y)	Find any of the alternatives separated with |
+Metacharacters are characters with a special meaning:
+
+Metacharacter	Description
+\d	Find a digit
+\s	Find a whitespace character
+\b	Find a match at the beginning or at the end of a word
+\uxxxx	Find the Unicode character specified by the hexadecimal number xxxx
+Quantifiers define quantities:
+
+Quantifier	Description
+n+	Matches any string that contains at least one n
+n*	Matches any string that contains zero or more occurrences of n
+n?	Matches any string that contains zero or one occurrences of n
+
+
+// Notes on web development:
+
+// ============================Intro to JavaScript==================================================================
+// This example uses the method to find an html element with id="demo" and changes the element content to hello javascript
+// note that this was was embedded in an HTML file
+document.getElementById("demo").innerHMTL = "Hello JavaScript";
+
+// can also change css style sheets as well
+document.getElementById("demo").style.fontSize = "25px";
+
+/*
+JavaScript can be embedded directly in HTML files either in the head or body
+JavaScript can also exist in sep files as well, see example below
+*/
+function myFunction() {
+  document.getElementById("demo").innerHMTL = "make change in something asshole.";
+}
+
+// to use this in html embed as such. Must use the <script src="scriptname.js"> </script>
+// can put script ref either in head or body of html
+// note that having sep js files can cache them resulting in faster load times
+<!DOCTYPE html>
+<html>
+  <body>
+    <script src="myScript.js"></script>
+  </body>
+</html>
+
+/*
+js has no built in print or display functions
+
+JavaScript can "display" data in different ways:
+  Writing into an alert box, using window.alert().
+  Writing into the HTML output using document.write().
+  Writing into an HTML element, using innerHTML.
+  Writing into the browser console, using console.log().
+*/
+
+// this is an example of writing using an alert window
+<!DOCTYPE html>
+<html>
+  <body>
+    <h1>My First Web Page</h1>
+    <p>My first paragraph.</p>
+      <script>
+        window.alert(5 + 6);
+      </script>
+  </body>
+</html>
+
+// using document write
+// Using document.write() after an HTML document is fully loaded, will delete all existing HTML, as a button click
+<!DOCTYPE html>
+<html>
+  <body>
+    <h1>My First Web Page</h1>
+    <p>My first paragraph.</p>
+    <script>
+    document.write(5 + 6);
+    </script>
+  </body>
+</html>
+
+// can also use innerHTML
+
+// can use console.log() as well, this will write to the browser console for you to view
+
+
+/*====================================JavaScript Syntax============================================================
+var x = 5;    // var is for new variable
+var y = 6;
+var z = x + y;
+
+/*
+-- strings can be with '' or ""
+-- operators: + - * /
+-- concat strings: 'john' + ' ' + ' is ' + ' a ' + 'fag'
+-- In JavaScript, the first character must be a letter, an underscore (_), or a dollar sign ($)
+-- Numbers are not allowed as the first character.
+-- js is case sensative
+-- js uses unicode
+-- add a semi colon after each statement
+-- ignores whitespace
+-- { this is a code block }
+*/
+
+//====================================JavaScript Statements=======================================================
+a = 5; b = 6; c = a + b;
+
+// If a JavaScript statement does not fit on one line, the best place to break it, is after an operator:
+document.getElementById("demo").innerHTML =
+"Hello Dolly.";
+
+// some js keywords
+break              // Terminates a switch or a loop
+continue           // Jumps out of a loop and starts at the top
+debugger           // Stops the execution of JavaScript, and calls (if available) the debugging function
+do ... while       // Executes a block of statements, and repeats the block, while a condition is true
+for                // Marks a block of statements to be executed, as long as a condition is true
+function           // Declares a function
+if ... else        // Marks a block of statements to be executed, depending on a condition
+return             // Exits a function
+switch             // Marks a block of statements to be executed, depending on different cases
+try ... catch      // Implements error handling to a block of statements
+var                // Declares a variable
+
+// can assign multiple in on line like c++
+var person = "John Doe", carName = "Volvo", price = 200;
+
+// redeclaring a variable still holds the value Volvo after this execution
+var carName = "Volvo";
+var carName;
+
+// If you add a number to a string, the number will be treated as string, and concatenated.
+var x = "5" + 2 + 3;
+output: "523"
+// =======================================JS Operators=========================================================
+
+// arithmetic
++   Addition
+-   Subtraction
+*   Multiplication
+/   Division
+%   Modulus
+++  Increment
+--  Decrement
+
+// assignment ops
+// Op    example       same as
+  =     x = y         x = y
+  +=    x += y        x = x + y
+  -=    x -= y        x = x - y
+  *=    x *= y        x = x * y
+  /=    x /= y        x = x / y
+  %=    x %= y        x = x % y
+
+// JS Comparison and logical operators
+// Operator Description
+==  equal to
+=== equal value and equal type
+!=  not equal
+!== not equal value or not equal type
+> greater than
+< less than
+>=  greater than or equal to
+<=  less than or equal to
+? ternary operator
+
+// JavaScript Type Operators
+// Operator  Description
+typeof     // Returns the type of a variable
+instanceof // Returns true if an object is an instance of an object type
+
+// JavaScript Operator Precedence Values
+// Value  Operator  Description Example
+19  ( ) Expression grouping (3 + 4)
+
+18  . Member  person.name
+18  []  Member  person["name"]
+
+17  ()  Function call myFunction()
+17  new Create  new Date()
+
+16  ++  Postfix Increment i++
+16  --  Postfix Decrement i--
+
+15  ++  Prefix Increment  ++i
+15  --  Prefix Decrement  --i
+15  ! Logical not !(x==y)
+15  typeof  Type  typeof x
+
+14  * Multiplication  10 * 5
+14  / Division  10 / 5
+14  % Modulo division 10 % 5
+14  **  Exponentiation  10 ** 2
+
+13  + Addition  10 + 5
+13  - Subtraction 10 - 5
+
+12  <<  Shift left  x << 2
+12  >>  Shift right x >> 2
+
+11  < Less than x < y
+11  <=  Less than or equal  x <= y
+11  > Greater than  x > y
+11  >=  Greater than or equal x >= y
+
+10  ==  Equal x == y
+10  === Strict equal  x === y
+10  !=  Unequal x != y
+10  !== Strict unequal  x !== y
+
+6 &&  And x && y
+5 ||  Or  x || y
+
+3 = Assignment  x = y
+3 +=  Assignment  x += y
+3 -=  Assignment  x -= y
+3 *=  Assignment  x *= y
+3 /=  Assignment  x /= y
+
+// The identity (===) operator behaves identically to the equality (==) operator except no type conversion is done,
+// and the types must be the same to be considered equal.
+
+//========================================JavaScript DataTypes========================================================
+// JavaScript Data Types
+// JavaScript variables can hold many data types: numbers, strings, arrays, objects and more:
+// JavaScript has dynamic types as it can change through assignments
+
+var length = 16;                               // Number
+var lastName = "Johnson";                      // String
+var cars = ["Saab", "Volvo", "BMW"];           // Array elements are accessed same as c++
+var x = {firstName:"John", lastName:"Doe"};    // Objects written in name:value pairs sep by commas
+
+// JavaScript Numbers
+// JavaScript has only one type of numbers.
+// Numbers can be written with, or without decimals:
+var x1 = 34.00;     // Written with decimals
+var x2 = 34;        // Written without decimals
+var y = 123e5;      // can be written in sci notation as well
+var x = 123e-5;
+
+// Boolean(value: ?)  <-- this is just a object wrapper for a boolean type
+var x = true;
+var y = false;
+
+// The typeof Operator
+// You can use the JavaScript typeof operator to find the type of a JavaScript variable:
+typeof "John"                // Returns string
+typeof 3.14                  // Returns number
+typeof false                 // Returns boolean
+typeof [1,2,3,4]             // Returns object
+typeof {name:'John', age:34} // Returns object
+
+// undefined types
+var person;                 // type of this is undefined as it was not assigned to yet
+var person = undefined;     // Value is undefined, type is undefined
+
+// null
+var person = null;           // Value is null, but type is still an object
+
+// Difference Between Undefined and Null
+typeof undefined             // undefined
+typeof null                  // object
+null === undefined           // false
+null == undefined            // true
+
+
+//===========================================JavaScript Functions====================================================
+function myFunction(p1, p2) {
+    return p1 * p2;              // The function returns the product of p1 and p2
+}
+
+// use in html
+<!DOCTYPE html>
+<html>
+  <body>
+
+    <p>This example calls a function which performs a calculation, and returns the result:</p>
+
+    <p id="demo"></p>
+
+    <script>
+      function myFunction(a, b) {
+          return a * b;
+      }
+      document.getElementById("demo").innerHTML = myFunction(4, 3);
+    </script>
+
+  </body>
+</html>
+
+
+// Accessing a function without () will return the function definition:
+<!DOCTYPE html>
+<html>
+  <body>
+
+    <p>Accessing a function without (), will return the function definition:</p>
+    <p id="demo"></p>
+
+    <script>
+      function toCelsius(f) {
+          return (5/9) * (f-32);
+      }
+      document.getElementById("demo").innerHTML = toCelsius;
+    </script>
+
+  </body>
+</html>
+// OUTPUT: function toCelsius(f) { return (5/9) * (f-32); }
+
+//===========================================JavaScript Objects========================================================
+
+var car = {type:"Fiat", model:"500", color:"white"};
+var person = {firstName:"John", lastName:"Doe", age:50, eyeColor:"blue"};
+
+// Accessing Object Properties
+// You can access object properties in two ways:
+alert(car.color);
+alert(person.age);
+alert(car["model"]);
+alert(person["lastName"]);
+
+// using obj methods
+// objectName.methodName()
+name = person.fullName();
+
+// Do Not Declare Strings, Numbers, and Booleans as Objects!
+// When a JavaScript variable is declared with the keyword "new", the variable is created as an object:
+var x = new String();        // Declares x as a String object
+var y = new Number();        // Declares y as a Number object
+var z = new Boolean();       // Declares z as a Boolean object
+// avoid declaring primitive types as objects as shown above it just slows down the code
+
+//===========================================JavaScript Scope========================================================
+// code here can not use carName
+function myFunction() {
+    var carName = "Volvo";
+    // code here can use carName
+}
+
+// Global vars
+var carName = " Volvo";
+// code here can use carName
+function myFunction() {
+    // code here can use  carName
+}
+
+// Automatically Global
+// If you assign a value to a variable that has not been declared, it will automatically become a GLOBAL variable.
+// This code example will declare carName as a global variable, even if it is executed inside a function.
+// begin code
+// code here can use carName
+function myFunction() {
+    carName = "Volvo";
+    // code here can use carName
+}
+// Global variables are deleted when you close the page.
+
+// Global vars in html become window vars
+<!DOCTYPE html>
+<html>
+  <body>
+    <p>
+      In HTML, all global variables will become window variables.
+    </p>
+    <p id="demo"></p>
+    <script>
+      myFunction();
+      document.getElementById("demo").innerHTML =
+                                        "I can display " + window.carName;    // since in an html file use window
+      function myFunction() {
+          carName = "Volvo";    // this is automatically global here
+      }
+    </script>
+  </body>
+</html>
+
+
+//===========================================JavaScript Events========================================================
+// TML events are "things" that happen to HTML elements.
+// When JavaScript is used in HTML pages, JavaScript can "react" on these events.
+
+/*
+Here are some examples of HTML events:
+  -- An HTML web page has finished loading
+  -- An HTML input field was changed
+  -- An HTML button was clicked
+
+we can execute code when an event happens
+html allows for event handler attributes, with JavaScript code, to be added to HTML elements
+*/
+
+// with single quotes
+<some-HTML-element some-event='some JavaScript'>
+
+// with double quotes
+<some-HTML-element some-event="some JavaScript">
+
+// click event
+<button onclick='getElementById("demo").innerHTML=Date()'>The time is?</button>
+
+// The code changes the content of its own element (using this.innerHTML):
+<button onclick="this.innerHTML=Date()">The time is?</button>
+
+/*
+Common HTML DOM Events
+  -- DOM Levels are the versions of the specification for defining how the Document Object Model should work,
+  -- similarly to how we have HTML4, HTML5, and CSS2.1 specifications.
+  -- The most recent spec is DOM Level 3, published in April 2004.
+  -- More on HTML DOM events can be learned in the w3 html DOM chapters
+  -- ref: http://www.w3schools.com/jsref/dom_obj_event.asp
+
+Here is a list of some common HTML DOM Events:
+    Event            Description            DOM Level
+MOUSE EVENTS
+onclick              The event occurs when the user clicks on an element  2
+oncontextmenu        The event occurs when the user right-clicks on an element to open a context menu 3
+ondblclick           The event occurs when the user double-clicks on an element 2
+onmousedown          The event occurs when the user presses a mouse button over an element  2
+onmouseenter         The event occurs when the pointer is moved onto an element 2
+onmouseleave         The event occurs when the pointer is moved out of an element 2
+onmousemove          The event occurs when the pointer is moving while it is over an element  2
+onmouseover          The event occurs when the pointer is moved onto an element, or onto one of its children  2
+onmouseout           The event occurs when a user moves the mouse pointer out of an element, or out of one of its children  2
+onmouseup            The event occurs when a user releases a mouse button over an element 2
+
+KEYBOARD EVENTS
+onkeydown            The event occurs when the user is pressing a key 2
+onkeypress           The event occurs when the user presses a key 2
+onkeyup              The event occurs when the user releases a key  2
+
+FRAME/OBJECT EVENTS
+onabort              The event occurs when the loading of a resource has been aborted 2
+onbeforeunload       The event occurs before the document is about to be unloaded 2
+onerror              The event occurs when an error occurs while loading an external file 2
+onhashchange         The event occurs when there has been changes to the anchor part of a URL 3
+onload               The event occurs when an object has loaded 2
+onpageshow           The event occurs when the user navigates to a webpage  3
+onpagehide           The event occurs when the user navigates away from a webpage 3
+onresize             The event occurs when the document view is resized 2
+onscroll             The event occurs when an element's scrollbar is being scrolled 2
+onunload             The event occurs once a page has unloaded (for <body>) 2
+
+FORM EVENTS
+onblur               The event occurs when an element loses focus 2
+onchange             The event occurs when the content of a form element, the selection, or the checked state have changed (for <input>, <keygen>, <select>, and <textarea>)  2
+onfocus              The event occurs when an element gets focus  2
+onfocusin            The event occurs when an element is about to get focus 2
+onfocusout           The event occurs when an element is about to lose focus  2
+oninput              The event occurs when an element gets user input 3
+oninvalid            The event occurs when an element is invalid  3
+onreset              The event occurs when a form is reset  2
+onsearch             The event occurs when the user writes something in a search field (for <input="search">) 3
+onselect             The event occurs after the user selects some text (for <input> and <textarea>) 2
+onsubmit             The event occurs when a form is submitted  2
+
+Drag Events
+Event Description DOM
+ondrag  The event occurs when an element is being dragged 3
+ondragend The event occurs when the user has finished dragging an element 3
+ondragenter The event occurs when the dragged element enters the drop target  3
+ondragleave The event occurs when the dragged element leaves the drop target  3
+ondragover  The event occurs when the dragged element is over the drop target 3
+ondragstart The event occurs when the user starts to drag an element  3
+ondrop  The event occurs when the dragged element is dropped on the drop target 3
+
+Clipboard Events
+Event Description DOM
+oncopy  The event occurs when the user copies the content of an element
+oncut The event occurs when the user cuts the content of an element
+onpaste The event occurs when the user pastes some content in an element
+
+Print Events
+Event Description DOM
+onafterprint  The event occurs when a page has started printing, or if the print dialogue box has been closed 3
+onbeforeprint The event occurs when a page is about to be printed 3
+
+Media Events
+Event Description DOM
+onabort The event occurs when the loading of a media is aborted 3
+oncanplay The event occurs when the browser can start playing the media (when it has buffered enough to begin)  3
+oncanplaythrough  The event occurs when the browser can play through the media without stopping for buffering 3
+ondurationchange  The event occurs when the duration of the media is changed  3
+onemptied The event occurs when something bad happens and the media file is suddenly unavailable (like unexpectedly disconnects)  3
+onended The event occurs when the media has reach the end (useful for messages like "thanks for listening") 3
+onerror The event occurs when an error occurred during the loading of a media file  3
+onloadeddata  The event occurs when media data is loaded  3
+onloadedmetadata  The event occurs when meta data (like dimensions and duration) are loaded 3
+onloadstart The event occurs when the browser starts looking for the specified media  3
+onpause The event occurs when the media is paused either by the user or programmatically  3
+onplay  The event occurs when the media has been started or is no longer paused 3
+onplaying The event occurs when the media is playing after having been paused or stopped for buffering  3
+onprogress  The event occurs when the browser is in the process of getting the media data (downloading the media) 3
+onratechange  The event occurs when the playing speed of the media is changed 3
+onseeked  The event occurs when the user is finished moving/skipping to a new position in the media 3
+onseeking The event occurs when the user starts moving/skipping to a new position in the media  3
+onstalled The event occurs when the browser is trying to get media data, but data is not available  3
+onsuspend The event occurs when the browser is intentionally not getting media data 3
+ontimeupdate  The event occurs when the playing position has changed (like when the user fast forwards to a different point in the media) 3
+onvolumechange  The event occurs when the volume of the media has changed (includes setting the volume to "mute") 3
+onwaiting The event occurs when the media has paused but is expected to resume (like when the media pauses to buffer more data) 3
+
+Animation Events
+Event Description DOM
+animationend  The event occurs when a CSS animation has completed 3
+animationiteration  The event occurs when a CSS animation is repeated 3
+animationstart  The event occurs when a CSS animation has started 3
+
+Transition Events
+Event Description DOM
+transitionend The event occurs when a CSS transition has completed  3
+
+Server-Sent Events
+Event Description DOM
+onerror The event occurs when an error occurs with the event source
+onmessage The event occurs when a message is received through the event source
+onopen  The event occurs when a connection with the event source is opened
+
+Misc Events
+Event Description DOM
+onmessage The event occurs when a message is received through or from an object (WebSocket, Web Worker, Event Source or a child frame or a parent window) 3
+onmousewheel  Deprecated. Use the onwheel event instead
+ononline  The event occurs when the browser starts to work online 3
+onoffline The event occurs when the browser starts to work offline  3
+onpopstate  The event occurs when the window's history changes  3
+onshow  The event occurs when a <menu> element is shown as a context menu 3
+onstorage The event occurs when a Web Storage area is updated 3
+ontoggle  The event occurs when the user opens or closes the <details> element  3
+onwheel The event occurs when the mouse wheel rolls up or down over an element  3
+
+Touch Events
+Event Description DOM
+ontouchcancel The event occurs when the touch is interrupted
+ontouchend  The event occurs when a finger is removed from a touch screen
+ontouchmove The event occurs when a finger is dragged across the screen
+ontouchstart  The event occurs when a finger is placed on a touch screen
+
+Event Object
+Constants
+Constant  Description DOM
+CAPTURING_PHASE The current event phase is the capture phase (1)  1
+AT_TARGET The current event is in the target phase, i.e. it is being evaluated at the event target (2)  2
+BUBBLING_PHASE  The current event phase is the bubbling phase (3) 3
+
+Properties
+Property  Description DOM
+bubbles Returns whether or not a specific event is a bubbling event 2
+cancelable  Returns whether or not an event can have its default action prevented 2
+currentTarget Returns the element whose event listeners triggered the event 2
+defaultPrevented  Returns whether or not the preventDefault() method was called for the event 3
+eventPhase  Returns which phase of the event flow is currently being evaluated  2
+isTrusted Returns whether or not an event is trusted  3
+target  Returns the element that triggered the event  2
+timeStamp Returns the time (in milliseconds relative to the epoch) at which the event was created 2
+type  Returns the name of the event 2
+view  Returns a reference to the Window object where the event occured  2
+
+Methods
+Method  Description DOM
+preventDefault()  Cancels the event if it is cancelable, meaning that the default action that belongs to the event will not occur 2
+stopImmediatePropagation()  Prevents other listeners of the same event from being called  3
+stopPropagation() Prevents further propagation of an event during event flow  2
+
+MouseEvent Object
+Property  Description DOM
+altKey  Returns whether the "ALT" key was pressed when the mouse event was triggered  2
+button  Returns which mouse button was pressed when the mouse event was triggered 2
+buttons Returns which mouse buttons were pressed when the mouse event was triggered 3
+clientX Returns the horizontal coordinate of the mouse pointer, relative to the current window, when the mouse event was triggered  2
+clientY Returns the vertical coordinate of the mouse pointer, relative to the current window, when the mouse event was triggered  2
+ctrlKey Returns whether the "CTRL" key was pressed when the mouse event was triggered 2
+detail  Returns a number that indicates how many times the mouse was clicked  2
+metaKey Returns whether the "META" key was pressed when an event was triggered  2
+pageX Returns the horizontal coordinate of the mouse pointer, relative to the document, when the mouse event was triggered
+pageY Returns the vertical coordinate of the mouse pointer, relative to the document, when the mouse event was triggered
+relatedTarget Returns the element related to the element that triggered the mouse event 2
+screenX Returns the horizontal coordinate of the mouse pointer, relative to the screen, when an event was triggered 2
+screenY Returns the vertical coordinate of the mouse pointer, relative to the screen, when an event was triggered 2
+shiftKey  Returns whether the "SHIFT" key was pressed when an event was triggered 2
+which Returns which mouse button was pressed when the mouse event was triggered 2
+
+KeyboardEvent Object
+Property  Description DOM
+altKey  Returns whether the "ALT" key was pressed when the key event was triggered  2
+ctrlKey Returns whether the "CTRL" key was pressed when the key event was triggered 2
+charCode  Returns the Unicode character code of the key that triggered the onkeypress event 2
+key Returns the key value of the key represented by the event 3
+keyCode Returns the Unicode character code of the key that triggered the onkeypress event, or the Unicode key code of the key that triggered the onkeydown or onkeyup event 2
+location  Returns the location of a key on the keyboard or device 3
+metaKey Returns whether the "meta" key was pressed when the key event was triggered 2
+shiftKey  Returns whether the "SHIFT" key was pressed when the key event was triggered  2
+which Returns the Unicode character code of the key that triggered the onkeypress event, or the Unicode key code of the key that triggered the onkeydown or onkeyup event 2
+
+HashChangeEvent Object
+Property  Description DOM
+newURL  Returns the URL of the document, after the hash has been changed
+oldURL  Returns the URL of the document, before the hash was changed
+
+PageTransitionEvent Object
+Property  Description DOM
+persisted Returns whether the webpage was cached by the browser
+
+FocusEvent Object
+Property  Description DOM
+relatedTarget Returns the element related to the element that triggered the event 3
+
+AnimationEvent Object
+Property  Description DOM
+animationName Returns the name of the animation
+elapsedTime Returns the number of seconds an animation has been running
+
+TransitionEvent Object
+Property  Description DOM
+propertyName  Returns the name of the CSS property associated with the transition
+elapsedTime Returns the number of seconds a transition has been running
+
+WheelEvent Object
+Property  Description DOM
+deltaX  Returns the horizontal scroll amount of a mouse wheel (x-axis)  3
+deltaY  Returns the vertical scroll amount of a mouse wheel (y-axis)  3
+deltaZ  Returns the scroll amount of a mouse wheel for the z-axis 3
+deltaMode Returns a number that represents the unit of measurements for delta values (pixels, lines or pages) 3
+*/
+
+// ==================================JavaScript Strings===============================================================
+// String Length
+// The length of a string is found in the built in property length:
+var txt = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+var sln = txt.length;
+
+// use \ to ignore chars such as
+var x = 'It\'s alright';
+var y = "We are the so-called \"Vikings\" from the north."
+
+// special chars
+// Code Outputs
+//  \'  single quote
+//  \"  double quote
+//  \\  backslash
+//  \n  new line
+//  \r  carriage return
+//  \t  tab
+//  \b  backspace
+//  \f  form feed
+
+// use / regex / for regular expressions
+
+// can break up string text with a \
+document.getElementById("demo").innerHTML = "Hello \
+Dolly!";
+
+// cannot do this illegal
+document.getElementById("demo").innerHTML = \
+"Hello Dolly!";
+
+// strings can be objects
+var x = "John";
+var y = new String("John");        // avoid doing this
+// typeof x will return string
+// typeof y will return object
+// (x === y) is false because x and y have different types (string and object)
+// note that js objects cannot be compared
+
+//================================String Methods and Properties===================================================
+// length
+var txt = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+var sln = txt.length;
+
+// finding first letter of a substring
+var str = "Please locate where 'locate' occurs!";
+var pos = str.indexOf("locate");    // first letter from the left side is what is returned 'l' is the 7th char from left
+// output:  7
+
+// first element of string is in index 0
+function myFunction() {
+    var str = document.getElementById("p1").innerHTML;  // where <p id="p1">lease locate where 'locate' occurs!.</p>
+    var pos = str.indexOf("locate");
+    document.getElementById("demo").innerHTML = pos;
+}
+
+// lastIndexOf() method returns the index of the last occurrence of a specified text in a string
+// output of the first script above is 21
+
+// searching for a string in a string
+// search is the same as index but search more powerful options
+var pos = str.search("locate");
+
+// finding sub strings and shit
+// There are 3 methods for extracting a part of a string:
+slice(start, end)
+substring(start, end)
+substr(start, length)
+
+// using slice
+var str = "Apple, Banana, Kiwi";
+var res = str.slice(7,13);      // returns banana
+var res = str.slice(-12);       // counting from the end --> returns: Banana, Kiwi
+
+// substring cannot accept neg vals
+var res = str.substring(7,13);  // gives us banana
+
+// using substr
+// the only difference is the 2nd arg is the length of the string extracted
+var st = str.substr(7, 6);   // gives us banana
+
+// using replace to replace string content
+str = "Please visit Microsoft!";
+var n = str.replace("Microsoft","W3Schools");  // output: Please visit W3Schools
+
+// By default, the replace() function replaces only the first match. To replace all matches,
+// use a regular expression with a g flag (for global match):
+str = "Please visit Microsoft!";     // global var
+var n = str.replace(/Microsoft/g,"W3Schools");
+// note replace does not change the string str it just produces a new one
+
+// some other methods
+var text1 = "Hello";
+var text2 = "World";
+var text2 = text1.toUpperCase();  // text2 is text1 converted to upper
+var text2 = text1.toLowerCase();  // text2 is text1 converted to lower
+var text3 = text1.concat("  ",text2); // we get Hello World
+str_obj.charAt(position)          // returns char at index position
+str_obj.charCodeAt(position)      // returns char unicode at index position
+str[position]                     // like an array can be accessed as well, this is unsafe
+
+// converting a string to an array
+// If the separator is omitted, the returned array will contain the whole string in index [0].
+// If the separator is "", the returned array will be an array of single characters:
+// for complete string ref: http://www.w3schools.com/jsref/jsref_obj_string.asp
+var txt = "a,b,c,d,e";   // String
+txt.split(",");          // Split on commas
+txt.split(" ");          // Split on spaces
+txt.split("|");          // Split on pipe
+
+
+//=====================================JavaScript Numbers=============================================================
+/*
+  -- JS numbers are always 64 bit floating point
+  -- JS does not differentiate between number types
+  -- integers are accurate up to 15 digits
+  -- max number of decimals is 17 -->
+  0.2 + 0.1 = 0.30000000000000004
+  2 + .1 = 2.1
+  ref: http://www.w3schools.com/jsref/jsref_obj_number.asp
+*/
+
+// helps to divide in order to help with the decimal issue
+var x = (0.2 * 10 + 0.1 * 10) / 10;       // x will be 0.3
+
+// hex
+var x = 0xFF;             // x will be 255
+
+// toString method can specify base
+var myNumber = 128;
+myNumber.toString(16);     // returns 80
+myNumber.toString(8);      // returns 200
+myNumber.toString(2);      // returns 10000000
+
+// infinity, this will execute till infinity and beyond :)
+var myNumber = 2;
+while (myNumber != Infinity) {          // Execute until Infinity
+    myNumber = myNumber * myNumber;
+}
+
+// Division by 0 (zero) also generates Infinity:
+var x = 2 / 0;    // x will be infinity or -infinity
+typeof Infinity;        // returns "number"
+
+// NaN
+var x = 100 / "Apple";  // x will be NaN (Not a Number)
+/*output=*/ NaN
+
+// if a string contains a numeric val then the result will be a number as well
+var x = 100 / "10";     // x will be 10, this is a number
+
+// div num and string with no number
+var x = 100 / "apple";
+isNaN(x);               // returns true because x is Not a Number
+
+// and this
+var x = NaN;
+var y = "5";
+var z = x + y;         // z will be NaN5
+typeof NaN;             // returns "number"
+
+// But numbers can also be defined as objects with the keyword new: var y = new Number(123)
+// not good to do though
+var x = 123;                  // number
+var y = new Number(56);      // obj
+// (x == y) is true because x and y have equal values
+// (x === y) is false because x and y have different types
+
+// cannot compare objects
+var x = new Number(500);
+var y = new Number(500);
+// (x == y) is false because objects cannot be compared
+
+// ==================================JavaScript Number Methods=========================================================
+// All number methods can be used on any type of numbers (literals, variables, or expressions):
+var x = 123;
+x.toString();            // returns 123 from variable x
+(123).toString();        // returns 123 from literal 123
+(100 + 23).toString();   // returns 123 from expression 100 + 23
+
+// A parameter defines the number of characters behind the decimal point:
+var x = 9.656;
+x.toExponential(2);     // returns 9.66e+0
+x.toExponential(4);     // returns 9.6560e+0
+x.toExponential(6);     // returns 9.656000e+0
+
+// toFixed() specify number of decimal points
+var x = 9.656;
+x.toFixed(0);           // returns 10
+x.toFixed(2);           // returns 9.66
+x.toFixed(4);           // returns 9.6560
+x.toFixed(6);           // returns 9.656000
+
+// toPrecision() returns a string, with a number written with a specified length:
+var x = 9.656;
+x.toPrecision();        // returns 9.656
+x.toPrecision(2);       // returns 9.7
+x.toPrecision(4);       // returns 9.656
+x.toPrecision(6);       // returns 9.65600
+
+// returns number as a number
+// valueOf()
+var x = 123;
+x.valueOf();            // returns 123 from variable x
+(123).valueOf();        // returns 123 from literal 123
+(100 + 23).valueOf();   // returns 123 from expression 100 + 23
+
+
+// There are 3 JavaScript functions that can be used to convert variables to numbers:
+The Number()      // global method, these methods can be used on all JS datatypes
+The parseInt()    // global method
+The parseFloat()  // global method
+
+// Number()
+x = true;
+Number(x);        // returns 1
+x = false;
+Number(x);        // returns 0
+x = new Date();
+Number(x);        // returns 1404568027739
+x = "10"
+Number(x);        // returns 10
+x = "10 20"
+Number(x);        // returns NaN
+
+// parseInt()
+parseInt("10");         // returns 10
+parseInt("10.33");      // returns 10
+parseInt("10 20 30");   // returns 10
+parseInt("10 years");   // returns 10
+parseInt("years 10");   // returns NaN
+
+// parseFloat()
+parseFloat("10");        // returns 10
+parseFloat("10.33");     // returns 10.33
+parseFloat("10 20 30");  // returns 10
+parseFloat("10 years");  // returns 10
+parseFloat("years 10");  // returns NaN
+
+
+// number properties are like c++ such as MAX_VALUE MIN_VALUE etc etc
+var x = Number.MAX_VALUE;  // returns --> 1.7976931348623157e+308
+
+//==========================================JavaScript Math Object=====================================================
+// allows you to preform several math ops using methods
+// this is used like a static class in java
+// ref: http://www.w3schools.com/jsref/jsref_obj_math.asp
+Math.random();      // random number between 0 and 1
+Math.acosh(3.14);
+Math.floor(3.14);   // output: 3
+// Some Constants
+Math.E          // returns Euler's number
+Math.PI         // returns PI
+Math.SQRT2      // returns the square root of 2
+Math.SQRT1_2    // returns the square root of 1/2
+Math.LN2        // returns the natural logarithm of 2
+Math.LN10       // returns the natural logarithm of 10
+Math.LOG2E      // returns base 2 logarithm of E
+Math.LOG10E     // returns base 10 logarithm of E
+
+// MATH OBJECT METHODS
+abs(x)  Returns the absolute value of x
+acos(x) Returns the arccosine of x, in radians
+asin(x) Returns the arcsine of x, in radians
+atan(x) Returns the arctangent of x as a numeric value between -PI/2 and PI/2 radians
+atan2(y,x)  Returns the arctangent of the quotient of its arguments
+ceil(x) Returns x, rounded upwards to the nearest integer
+cos(x)  Returns the cosine of x (x is in radians)
+exp(x)  Returns the value of Ex
+floor(x)  Returns x, rounded downwards to the nearest integer
+log(x)  Returns the natural logarithm (base E) of x
+max(x,y,z,...,n)  Returns the number with the highest value
+min(x,y,z,...,n)  Returns the number with the lowest value
+pow(x,y)  Returns the value of x to the power of y
+random()  Returns a random number between 0 and 1
+round(x)  Rounds x to the nearest integer
+sin(x)  Returns the sine of x (x is in radians)
+sqrt(x) Returns the square root of x
+tan(x)  Returns the tangent of an angle
+
+//==============================================JavaScript Dates=======================================================
+
+/*
+The Date object lets you work with dates (years, months, days, hours, minutes, seconds, and milliseconds)
+A JavaScript date can be written as a string:
+Tue Apr 19 2016 19:01:37 GMT-0400 (EDT)
+
+-- can also mess with timezones and all that shit as well
+*/
+
+// Displaying Dates
+<p id="demo"></p>
+<script>
+document.getElementById("demo").innerHMTL = Date();
+//OUTPUT: Tue Apr 19 2016 19:03:02 GMT-0400 (EDT)
+
+// Date Objects
+new Date()
+new Date(milliseconds)
+new Date(dateString)
+new Date(year, month, day, hours, minutes, seconds, milliseconds)
+
+// using a date string
+<p id="demo"></p>
+<script>
+var d = new Date("October 13, 2014 11:13:00");
+document.getElementById("demo").innerHTML = d;
+</script>
+
+// Using new Date(number), creates a new date object as zero time plus the number.
+// Zero time is 01 January 1970 00:00:00 UTC. The number is specified in milliseconds:
+// JS dates are calculated in milliseconds from 01 January, 1970 00:00:00 UTC, one day contains 86,400,000 ms
+
+//The toUTCString() method converts a date to a UTC string (a date display standard).
+var d = new Date()
+d.toUTCString()
+
+// toDateString() converts date to a more readable format
+var d = new Date()
+d.toDateString()
+//output: Tue Apr 19 2016
+
+//=========================================Date Formats==============================================================
+/*
+  4 types of dates:
+    ISO
+    Long Dates
+    Short Dates
+    Full Format
+*/
+
+// ISO Dates
+var d = new Date("2015-03-25");             // complete date
+var d = new Date("2015-03");                // year and month
+var d = new Date("2015");                   // year
+var d = new Date("2015-03-25T12:00:00");    // complete date plus hour min and secs
+
+// Long Dates
+var d = new Date("Mar 25 2015")
+var d = new Date("25 Mar 2015")
+// Commas are ignored. Names are case insensitive
+var d = new Date("JANUARY, 25, 2015");
+
+// Short Dates: often written in MM/DD/YYYY
+var d = new Date("03/25/2015");
+var d = new Date("2015/03/25");
+
+// Full Date format : JavaScript will accept date strings in "full JavaScript format":
+var d = new Date("Wed Mar 25 2015 09:56:24 GMT+0100 (W. Europe Standard Time)");
+// JavaScript will ignore errors both in the day name and in the time parentheses
+var d = new Date("Fri Mar 25 2015 09:56:24 GMT+0100 (Tokyo Time)");
+
+// Time Zones
+UTC Coordinated Universal Time
+GMT Greenwich Mean Time
+EDT (US) Eastern Daylight Time
+CDT (US) Central Daylight Time
+MDT (US) Mountain Daylight Time
+PDT (US) Pacific Daylight Time
+EST (US) Eastern Standard Time
+CST (US) Central Standard Time
+MST (US) Mountain Standard Time
+PST (US) Pacific Standard Time
+
+// some methods
+getDate() //Get the day as a number (1-31)
+getDay()  //Get the weekday as a number (0-6)
+getFullYear() //Get the four digit year (yyyy)
+getHours()  //Get the hour (0-23)
+getMilliseconds() //Get the milliseconds (0-999)
+getMinutes()  //Get the minutes (0-59)
+getMonth()  //Get the month (0-11)
+getSeconds()  //Get the seconds (0-59)
+getTime() //Get the time (milliseconds since January 1, 1970)
+
+
+
+//==========================================JavaScript Array=========================================================
+
+// Displaying Arrays
+// no exception when accessing out of bounds of the array
+// always uses numbered indexes
+<p id="demo"></p>
+<script>
+  var cars = ["Saab", "Volvo", "BMW"];
+  document.getElementById("demo").innerHTML = cars;
+</script>
+
+// Syntax
+var array-name = [item1, item2, ...];
+
+// can also use new but no need to as they both do the same
+var cars = new Array("Saab", "Volvo", "BMW")
+
+// accessing and assigning
+var name = cars[0];
+cars[0] = "Saab";
+
+// Can mix objects in a single array
+myArray[0] = Date.now;
+myArray[1] = myFunction;
+myArray[2] = myCars;
+
+// Arrays are objects
+<!DOCTYPE html>
+<html>
+  <body>
+    <p id="demo"></p>
+    <script>
+      var person = {firstName:"John", lastName:"Doe", age:46};
+      document.getElementById("demo").innerHTML = person["firstName"];
+    </script>
+  </body>
+</html>
+
+// output: John
+
+
+// some properties and methods
+var x = cars.length;                // The length property returns the number of elements in cars
+var y = cars.sort();                // The sort() method sort cars in alphabetical order
+fruits.length;
+fruits[fruits.length] = "Lemon";     // adds a new element (Lemon) to fruits, adds to end
+
+// can add elements to index higher than the size of the array, this will create holes within the array
+
+// Looping arrays
+var i, fruits, text, flen
+for(i = 0; i < flen; i++){
+  text += "<li>" + fruits[i] + "</li?";
+}
+
+// avoid using new with arrays
+var points = new Array();         // Bad
+var points = [];                  // Good
+
+// to check if fruits is an array or not
+Array.isArray(fruits);     // returns true
+
+// can also check this way as well
+function isArray(x) {
+    return x.constructor.toString().indexOf("Array") > -1;
+}
+
+//==========================================JavaScript Array Methods================================================
+//ref:: http://www.w3schools.com/jsref/jsref_obj_array.asp
+// convert array to string (returns comma separated elements)
+var fruits = ["Banana", "Orange", "Apple", "Mango"];
+document.getElementById("demo").innerHTML = fruits.toString();    // just use the toString method
+
+// can also use the join method similar to python
+var fruits = ["Banana", "Orange","Apple", "Mango"];
+document.getElementById("demo").innerHTML = fruits.join(" * ");
+// output: Banana * Orange * Apple * Mango
+
+// popping is possible using the pop method pop(), removes last element
+var removedElement = fruits.pop()     // also returns element that was removed
+
+// pushing is the opposite to popping as it adds a new to element to end of the array
+var newLengthOfArray = fruits.push("kiwi")       // adds kiwi to the end of the list
+
+// Can shift elements
+var fruits = ["Banana", "Orange", "Apple", "Mango"];
+fruits.shift();            // Removes the first element "Banana" from fruits
+// fruits is now Orange, apple, mango
+
+// unshift() method add el to front and shift everything right
+fruits.unshift("lemon");   // adds a new element to the front of the list and shifts the others down
+
+// deleting elements
+var fruits = ["Banana", "Orange", "Apple", "Mango"];
+delete fruits[0];           // Changes the first element in fruits to undefined
+
+// slice can be used to add elements
+var fruits = ["Banana", "Orange", "Apple", "Mango"];
+fruits.splice(2, 0, "Lemon", "Kiwi");
+// 2 defines the pos where new elements should be added
+// 0 defines how many elements should be removed
+// new array: Banana,Orange,Lemon,Kiwi,Apple,Mango
+
+// using splice to remove elements
+fruits.splice(0, 1);        // Removes the first element of fruits
+// 0 defines the position where new elements should be added
+// 1 defines how many elements should be removed
+// the rest of the params are omitted
+
+// sorting an array
+fruits.sort()
+
+// reverse array
+fruits.sort()
+fruits.reverse()   // this puts it in descending order
+
+// numeric sort
+var points = [40, 100, 1, 5, 25, 10];
+points.sort(function(a, b){return a-b}); // for numbers we need to define a sorting function comparator
+// can also use
+function(a,b){return a>b}
+
+// The compare function
+// defines an alternative sort order
+// should return a negative, zero, or positive value.
+// sorts according the return val of the function
+// a can be considered to be the value that is compared to b
+// so if a - b < 0 then a is considered to be less than b (no shit)
+
+// highest to lowest
+function(a, b) {return b-a}
+
+// lowest to highest
+fucntion(a, b) {return a-b}
+
+// concatting two arrays together
+var myChildren = myGirls.concat(myBOys);
+
+// concatting multiple together
+var arr1 = ["Cecilie", "Lone"];
+var arr2 = ["Emil", "Tobias","Linus"];
+var arr3 = ["Robin", "Morgan"];
+var myChildren = arr1.concat(arr2, arr3);     // Concatenates arr1 with arr2 and arr3
+
+
+// slicing
+// This example slices out a part of an array starting from array element 3 ("Apple"):
+fruits.slice(3)
+
+// [1, 3)
+var citrus = fruits.slice(1, 3);
+
+// valueOf array will give us a string representation of the array in question
+
+//==========================================JavaScript Booleans================================================
+
+// Boolean() function
+// 0 is false
+// -0 is false as well
+// "" is false
+// null is false
+// NaN is false ie 10 / "h"
+Boolean(10 > 9)        // returns true
+(10 > 9)              // also returns true
+10 > 9                // also returns true
+
+// can do ternery like in c++
+variablename = (condition) ? value1:value2 // value1 is when true
+
+// empty strings convert to zero
+// when comparing strings to number JS converts string to a number
+// a non numeric string gets converted to NaN which is always false
+2 < 12       true Try it »
+2 < "12"     true Try it » // this is because when comparing to a string with a number they are both converted to number
+2 < "John"   false  Try it »
+2 > "John"   false  Try it »
+2 == "John"  false  Try it »
+"2" < "12"   false  Try it » // this is true as they are compared alphabetically
+"2" > "12"   true Try it »
+"2" == "12"  false
+
+// BITWISE OPS
+& AND x = 5 & 1 0101 & 0001 0001  1
+| OR  x = 5 | 1 0101 | 0001 0101  5
+~ NOT x = ~ 5  ~0101  1010  10
+^ XOR x = 5 ^ 1 0101 ^ 0001 0100  4
+<<  Left shift  x = 5 << 1  0101 << 1 1010  10
+>>  Right shift x = 5 >> 1  0101 >> 1 0010  2
+
+//  conditionals
+if (condition) {
+    // block of code to be executed if the condition is true
+}
+else if (condition2) {
+  // do shit
+}
+else {
+  //do shit
+}
+
+// switch case statements
+switch(expression) {
+    case n:
+        code block
+        break;
+    case n:
+        code block
+        break;
+    default:
+        default code block
+}
+
+//===================================================JavaScript Loops============================================
+/*
+Different Kinds of Loops
+JavaScript supports different kinds of loops:
+for - loops through a block of code a number of times
+for/in - loops through the properties of an object
+while - loops through a block of code while a specified condition is true
+do/while - also loops through a block of code while a specified condition is true
+*/
+// can init multiple vars in loop declaration
+for (i = 0, len = cars.length, text = ""; i < len; i++) {
+    text += cars[i] + "<br>";
+}
+
+//Statement 3 can also be omitted (like when you increment your values inside the loop):
+var i = 0;
+var len = cars.length;
+for (; i < len; ) {
+    text += cars[i] + "<br>";
+    i++;
+}
+
+// The For/In Loop
+// The JavaScript for/in statement loops through the properties of an object:
+var person = {fname:"John", lname:"Doe", age:25};
+var text = "";
+var x;
+for (x in person) {
+    text += person[x];
+}
+
+// while loop
+while (condition) {
+    code block to be executed
+}
+
+// do while loop
+do {
+    code block to be executed
+}
+while (condition);
+
+// to control flow
+break and continue
+
+// can also use labels
+label:
+statements
+
+
+var cars = ["BMW", "Volvo", "Saab", "Ford"];
+list: {
+    text += cars[0] + "<br>";
+    text += cars[1] + "<br>";
+    text += cars[2] + "<br>";
+    break list;
+    text += cars[3] + "<br>";
+    text += cars[4] + "<br>";
+    text += cars[5] + "<br>";
+}
+// output
+BMW
+Volvo
+Saab
+
+/*
+JavaScript Data Types
+In JavaScript there are 5 different data types that can contain values:
+  string
+  number
+  boolean
+  object
+  function
+
+There are 3 types of objects:
+  Object
+  Date
+  Array
+
+And 2 data types that cannot contain values:
+  null
+  undefined
+
+note that typeof returns a string
+*/
+String(x)         // returns a string from a number variable x
+String(123)       // returns a string from a number literal 123
+String(100 + 23)  // returns a string from a number from an expression
+
+Number("3.14")    // returns 3.14
+Number(" ")       // returns 0
+Number("")        // returns 0
+Number("99 88")   // returns NaN
+
+//=====================================================JavaScript REGEX==============================================
+Regular Expression Modifiers
+Modifiers can be used to perform case-insensitive more global searches:
+
+Modifier  Description
+i Perform case-insensitive matching
+g Perform a global match (find all matches rather than stopping after the first match)
+m Perform multiline matching
+Regular Expression Patterns
+Brackets are used to find a range of characters:
+
+Expression  Description
+[abc] Find any of the characters between the brackets
+[0-9] Find any of the digits between the brackets
+(x|y) Find any of the alternatives separated with |
+Metacharacters are characters with a special meaning:
+
+Metacharacter Description
+\d  Find a digit
+\s  Find a whitespace character
+\b  Find a match at the beginning or at the end of a word
+\uxxxx  Find the Unicode character specified by the hexadecimal number xxxx
+Quantifiers define quantities:
+
+Quantifier  Description
+n+  Matches any string that contains at least one n
+n*  Matches any string that contains zero or more occurrences of n
+n?  Matches any string that contains zero or one occurrences of n
+
+
+//===========================================================HTML Tags==================================================
+<!-->
+<!DOCTYPE>
+<a>  Defines a hyperlink
+<abbr>
+<acronym>
+<address>
+<applet>
+<area>      defines an area inside an image map
+<article>
+<aside>
+<audio>    defines audio content
+<b>         defines bold text
+<base>      defines base url/target for all relative URLs in a document
+<basefont>
+<bdi>
+<bdo>
+<big>
+<blockquote>
+<body>
+    attributes
+        alink
+        background
+        bgcolor
+        link
+        text
+        vlink
+<br>
+<button>
+<canvas>
+<caption>
+<center>
+<cite>
+<code>
+<col>
+<colgroup>
+<data>
+<datalist>
+<dd>
+<del>
+<details>
+<dfn>
+<dialog>
+<dir>
+<div>
+<dl>
+<dt>
+<em>
+<embed>
+<fieldset>
+<figcaption>
+<figure>
+<font>
+<footer>
+<form>
+<frame>
+<frameset>
+<h1> - <h6>
+<head>
+<header>
+<hr>
+<html>
+<i>
+<iframe>
+<img>
+<input>
+<ins>
+<kbd>
+<keygen>
+<label>
+<legend>
+<li>
+<link>
+<main>
+<map>
+<mark>
+<menu>
+<menuitem>
+<meta>
+<meter>
+<nav>
+<noframes>
+<noscript>
+<object>
+<ol>
+<optgroup>
+<option>
+<output>
+<p>
+<param>
+<picture>
+<pre>
+<progress>
+<q>
+<rp>
+<rt>
+<ruby>
+<s>
+<samp>
+<script>
+<section>
+<select>
+<small>
+<source>
+<span>
+<strike>
+<strong>
+<style>
+<sub>
+<summary>
+<sup>
+<table>
+<tbody>
+<td>
+<textarea>
+<tfoot>
+<th>
+<thead>
+<time>
+<title>
+<tr>
+<track>
+<tt>
+<u>
+<ul>
+<var>
+<video>
+<wbr>
+

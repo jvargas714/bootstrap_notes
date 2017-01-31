@@ -1,0 +1,90 @@
+======================================================CSS===========================================
+@media tags:
+	- The @media rule is used to define different style rules for different media types/devices.
+	
+	- In CSS2 this was called media types, while in CSS3 it is called media queries.
+	
+	-Media queries look at the capability of the device and can be used to check many things such as:
+		*width and height of the viewport
+		*width and height of the device
+		*orientation (is the tablet/phone in landscape or portrait mode?)
+		*resolution
+		*and much more
+
+	- CSS Syntax 
+		@media not|only mediatype and (media feature) {
+			CSS-Code;
+		}
+
+	- Can also have different style sheets for different media type 
+		* <link rel="stylesheet" media="mediatype and|not|only (media feature)" href="mystylesheet.css">
+
+	- Media Types
+		1. all : used for all media types 
+		2. print : used for printers 
+		3. screen : used for computer screens, tablets, smart phones etc etc 
+		4. speech : used for screen readers that reads the page outload 
+
+	- there are many media features (too many to list here)
+
+@keyframes tags:
+	- specifies the animation code 
+	
+	- is created by the gradually changing from one set of CSS styles to another 
+	
+	- during animation you can change the set of css styles many times 
+	
+	- can specify when the style change will happen in percent, or with the keywords 'from' and 'to'
+		* for best support should always define 0% and 100% selectors  
+
+	- CSS Syntax:
+		@keyframes animationname {keyframes-selector {css-styles;}}
+
+		* keyframes-selector : required, percentage of the animation duration 
+			-- legal values 0-100% or can say from and to same as 0 to 100 
+			-- can have many keyframe selectors in one animation
+		* css-styles required one or more legal css style properties 
+		* animationname : defines the name of the animation this is required
+
+/*An example with a div defined as a red box <div></div>*/
+	div {
+    width: 100px;
+    height: 100px;
+    background: red;
+    position: relative;
+    -webkit-animation: mymove 5s infinite; /* Chrome, Safari, Opera */ 
+    animation: mymove 5s infinite;
+}
+
+/* Chrome, Safari, Opera */ 
+@-webkit-keyframes mymove {
+    0%   {top: 0px;}
+    25%  {top: 200px;}
+    75%  {top: 50px}
+    100% {top: 100px;}
+}
+
+<style type="text/css"></style> <-- text/css is the only supported type for css style tag 
+
+<input type="search"> 
+	- there can be many types see http://www.w3schools.com/tags/att_input_type.asp for reference
+
+=========================================BOOTSTRAP3=================================================
+
+Components:
+	Collapse
+		- can toggle content on pages with a bit of class changes and javascript. 
+		- also uses the transition plugin as well for smooth transitions 
+			* .collapse hides content 
+			* .collapsing is applied during transitions 
+			* .collapse.in shows content
+
+		example:
+			* SEE Dev/web/bootStrap_themes/components_examples.html for a working example of this
+
+		- can expand collapse to create an according effect
+			* to achieve this effect essentially just add to the collapsible element the 
+			data-parent="#selector"
+
+		example:
+			* SEE Dev/web/bootStrap_themes/components_examples.html for a working example of this
