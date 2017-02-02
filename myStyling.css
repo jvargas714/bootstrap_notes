@@ -1,0 +1,14 @@
+.p4 {
+    position: relative;
+    left: 30px;
+    top: 45px;
+    display: inline-block;
+    transform: rotate(120deg);
+}
+
+.p5 {
+    position: relative;
+    left: 430px;
+    top: 15px;
+    display: inline-block;
+}
