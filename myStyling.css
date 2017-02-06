@@ -1,14 +1,68 @@
 .p4 {
-    position: relative;
+    position: fixed;
     left: 30px;
-    top: 45px;
+    top: 100px;
     display: inline-block;
     transform: rotate(120deg);
 }
 
 .p5 {
-    position: relative;
+    position: fixed;
     left: 430px;
     top: 15px;
+    display: inline-block;
+}
+
+.p6 {
+    position: fixed;
+    left: 850px;
+    top: 100px;
+    display: inline-block;
+    transform: rotate(45deg);
+}
+
+.p7 {
+    position: fixed;
+    left: 850px;
+    top: 460px;
+    display: inline-block;
+    transform:  rotate(90deg);
+}
+
+.p8 {
+    position: fixed;
+    left: 850px;
+    top: 800px;
+    display: inline-block;
+    transform: rotate(115deg);
+}
+
+.p1 {
+    position: fixed;
+    left: 430px;
+    top: 850px;
+    display: inline-block;
+}
+
+.p2 {
+    position: fixed;
+    left: 30px;
+    top: 800px;
+    display: inline-block;
+    transform: rotate(45deg)
+}
+
+.p3 {
+    position: fixed;
+    left: 30px;
+    top: 470px;
+    display: inline-block;
+    transform: rotate(90deg);
+}
+
+.tableCards {
+    position: fixed;
+    left: 325px;
+    top: 460px;
     display: inline-block;
 }
